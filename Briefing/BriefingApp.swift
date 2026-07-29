@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct BriefingApp: App {
+    @State private var store = BriefingStore()
+
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        Window("Briefing", id: "briefing") {
+            BriefingView(store: store)
         }
+        .windowResizability(.contentSize)
     }
 }
