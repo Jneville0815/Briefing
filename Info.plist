@@ -23,9 +23,9 @@
 	<key>NSCalendarsFullAccessUsageDescription</key>
 	<string>Briefing reads your calendar to include upcoming events in your daily briefing.</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2026. All rights reserved.</string>
+	<string>Copyright © 2026 Jimmy Neville. Licensed under the MIT License.</string>
 	<key>GIDClientID</key>
-	<string>1060816175801-0esfv25jmkeg1mt388vrj7mg1fgfficb.apps.googleusercontent.com</string>
+	<string>YOUR_CLIENT_ID.apps.googleusercontent.com</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -35,7 +35,7 @@
 			<string>com.jimmy.briefing.Briefing</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.1060816175801-0esfv25jmkeg1mt388vrj7mg1fgfficb</string>
+				<string>com.googleusercontent.apps.YOUR_CLIENT_ID</string>
 			</array>
 		</dict>
 	</array>

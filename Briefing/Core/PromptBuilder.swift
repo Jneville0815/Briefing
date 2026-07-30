@@ -17,6 +17,7 @@ struct PromptBuilder: Sendable {
         emails: [EmailMessage] = [],
         facts: Facts = Facts(),
         todayWeather: String? = nil,
+        homeLocation: String = "",
         trips: [TripForecast] = [],
         previousDeliveries: [Briefing.Delivery] = [],
         deliveryCandidates: [EmailMessage] = []
@@ -26,14 +27,18 @@ struct PromptBuilder: Sendable {
         let today = todayFormatter.string(from: Date())
 
         let system = """
-        You are a personal daily briefing assistant. Your user is Jimmy. \
+        You are a personal daily briefing assistant. \
         You return a strictly-structured JSON briefing matching the provided schema. \
         Tone for any free-text fields: direct, warm, understated. No filler. \
         Today's date is \(today).
         """
 
+        let weatherHeading = homeLocation.trimmingCharacters(in: .whitespaces).isEmpty
+            ? "# Today's weather"
+            : "# Today's weather (\(homeLocation))"
+
         let user = """
-        # Today's weather (Knoxville, TN)
+        \(weatherHeading)
         \(todayWeather ?? "_(weather unavailable)_")
 
         # Calendar (next 14 days)

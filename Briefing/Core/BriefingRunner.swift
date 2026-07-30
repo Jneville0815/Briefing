@@ -171,6 +171,7 @@ actor BriefingRunner {
             emails: contextEmails,
             facts: facts,
             todayWeather: todayWeather?.summary,
+            homeLocation: config.homeLocation,
             trips: trips,
             previousDeliveries: previousDeliveries,
             deliveryCandidates: deliveryCandidates

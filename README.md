@@ -196,16 +196,13 @@ tccutil reset Calendar com.jimmy.briefing.Briefing
 
 Gmail is optional — without it, the briefing runs without email context (which also disables recurring-task email auto-detection and the deliveries feature).
 
-The Google Sign-In package and OAuth client ID are already wired into this project:
+The Google Sign-In package is already wired into this project — `GoogleSignIn-iOS` (9.1.0) is a resolved Swift Package dependency on the `Briefing` target, nothing to add in Xcode. You do need your own OAuth client ID, though: `Info.plist` ships with a placeholder `GIDClientID` and URL scheme, so Gmail sign-in won't work until you create your own credentials (below) and drop them in.
 
-- `GoogleSignIn-iOS` (9.1.0) is a resolved Swift Package dependency on the `Briefing` target — nothing to add in Xcode.
-- `Info.plist` already has a real `GIDClientID` and matching reversed-client-id URL scheme configured for bundle ID `com.jimmy.briefing.Briefing`.
-
-**To connect:** click **Connect** in the bottom bar of the window — a browser opens for Google's consent flow. Once approved, the bar shows "Gmail connected" and the next run includes email signals.
+**To connect:** once your credentials are in place, click **Connect** in the bottom bar of the window — a browser opens for Google's consent flow. Once approved, the bar shows "Gmail connected" and the next run includes email signals.
 
 **To disconnect:** click **Disconnect** in the bottom bar, or delete the `com.google.GIDSignIn` Keychain entries directly.
 
-### If you ever need to recreate the Google Cloud credentials
+### Creating Google Cloud credentials
 
 1. Go to https://console.cloud.google.com and create a project (or reuse one).
 2. Enable the **Gmail API**: APIs & Services → Library → search "Gmail API" → Enable.
@@ -227,3 +224,7 @@ The app is **unsandboxed in v1** so it can read your Obsidian vault from whereve
 1. Add `com.apple.security.app-sandbox` back to `Briefing.entitlements`.
 2. Flip `ENABLE_APP_SANDBOX = YES` in the target build settings.
 3. Swap `VaultSource`'s plain `FileManager` reads for a security-scoped bookmark flow (user picks the vault once via `NSOpenPanel`, the bookmark is stored in config, resolved on each run).
+
+## License
+
+MIT — see [LICENSE](LICENSE).
